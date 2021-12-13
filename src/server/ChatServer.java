@@ -1,5 +1,7 @@
 package server;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -10,6 +12,7 @@ public class ChatServer {
 
     private final AuthService authService;
     private final Map<String, ClientHandler> clients;
+    private final Logger logger = LogManager.getLogger(ChatServer.class);
 
     public ChatServer() {
         this.authService = new SimpleAuthService();
@@ -20,9 +23,11 @@ public class ChatServer {
         try (ServerSocket serverSocket = new ServerSocket(8189)) {
             while (true) {
                 System.out.println("Wait client connection...");
+                logger.info("Wait client connection...");
                 final Socket socket = serverSocket.accept();
                 new ClientHandler(socket, this);
                 System.out.println("Client connected");
+                logger.info("Client  connected");
             }
         } catch (IOException e) {
             e.printStackTrace();

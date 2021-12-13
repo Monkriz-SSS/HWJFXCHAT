@@ -2,7 +2,7 @@ package HM6;
 
 public class ArraysMethods {
 
-    public static int[] cutFor(int[] arr) throws RuntimeException {
+    public int[] cutFor(int[] arr) throws RuntimeException {
         if (arr.length == 0) {
             throw new RuntimeException("Пустой массив!");
         } else {
@@ -19,7 +19,7 @@ public class ArraysMethods {
         throw new RuntimeException("Массив не содержит 4!");
     }
 
-    public static boolean containsOneOrFour(int[] arr) throws RuntimeException {
+    public boolean containsOneOrFour(int[] arr) throws RuntimeException {
         if (arr.length == 0) throw new RuntimeException("Пустой массив!");
         int elemIsFound = 0;
         for (int j : arr) {
